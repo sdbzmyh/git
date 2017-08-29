@@ -1,6 +1,7 @@
 #include "builtin.h"
 #include "cache.h"
 #include "pack.h"
+#include "config.h"
 
 static const char show_index_usage[] =
 "git show-index";
@@ -12,6 +13,8 @@ int cmd_show_index(int argc, const char **argv, const char *prefix)
 	unsigned int version;
 	static unsigned int top_index[256];
 	const unsigned hashsz = the_hash_algo->rawsz;
+
+	git_config(git_default_config, NULL);
 
 	if (argc != 1)
 		usage(show_index_usage);
