@@ -171,6 +171,7 @@ char *hash_to_hex_algop(const unsigned char *hash, const struct git_hash_algo *a
 		ha = (struct hexbuf_array *) value;
 	} else {
 		ha = xmalloc(sizeof(*ha));
+		ha->idx = 0;
 		if (pthread_setspecific(hexbuf_array_key, (void *)ha))
 			die(_("failed to set thread buffer for hash to hex conversion"));
 	}
